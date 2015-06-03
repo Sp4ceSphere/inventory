@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @equipment_item.name %>
+</p>
+
+<p>
+  <strong>Serial:</strong>
+  <%= @equipment_item.serial %>
+</p>
+
+<p>
+  <strong>Purchase date:</strong>
+  <%= @equipment_item.purchase_date %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @equipment_item.comments %>
+</p>
+
+<p>
+  <strong>Equipment type:</strong>
+  <%= EquipmentType.find(@equipment_item.equipment_type_id).name  %>
+</p>
+
+<%= link_to 'Edit', edit_equipment_item_path(@equipment_item) %> |
+<%= link_to 'Back', equipment_items_path %>

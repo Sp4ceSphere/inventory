@@ -1,0 +1,42 @@
+<%= form_for(@equipment_item) do |f| %>
+  <% if @equipment_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@equipment_item.errors.count, "error") %> prohibited this equipment_item from being saved:</h2>
+
+      <ul>
+      <% @equipment_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :serial %><br>
+    <%= f.text_field :serial %>
+  </div>
+  <div class="field">
+    <%= f.label :purchase_date %><br>
+    <%= f.date_select :purchase_date %>
+  </div>
+  <div class="field">
+    <%= f.label :comments %><br>
+    <%= f.text_area :comments %>
+  </div>
+  <div class="field">
+    <%= f.label :equipment_type_id %><br>
+    <%= f.collection_select :equipment_type_id, EquipmentType.order(:name),:id,:name, include_blank: false %>
+  </div>
+
+  <!-- <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div> -->
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
