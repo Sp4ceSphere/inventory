@@ -1,28 +1,26 @@
-== README
+== README ==
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app requires postgres to be installed:
 
-Things you may want to cover:
+sudo apt-get update
+sudo apt-get install postgresql postgresql-contrib libpq-dev
 
-* Ruby version
+Then prepare the postgres database (use your username instead of "pguser")
 
-* System dependencies
+sudo -u postgres createuser -s pguser
+sudo -u postgres psql
+\password pguser
+\q
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Then be sure to update config/database.yml
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+== PREPARING RUBY ON RAILS ==
+
+Run:
+
+bundle install
+bin/rake db:setup
+bin/rake db:migrate
+
+To run the app, run "bin/rails server".
